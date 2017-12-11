@@ -75,6 +75,17 @@ public class PositionTests {
     }
 
 
+    //test to check the rover doesn't move into a space if there is an obstacle there
+    @Test
+    public void testObstacleResponse(){
+        boolean obstaclePresent = true;
+        String startPosition = "";
+        String newPosition = "";
+        Assert.assertTrue(!startPosition.equals(newPosition));
+    }
+
+
+
 
 
 
