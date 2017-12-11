@@ -4,6 +4,7 @@ import org.junit.Test;
 import org.junit.Assert;
 import Rover.Rover;
 import Rover.TurnRover;
+import Rover.ObstacleDetection;
 
 /**
  * Created by yvettepinder on 11/12/2017.
@@ -12,10 +13,12 @@ public class PositionTests {
 
     private Rover rover;
     private TurnRover turnRover;
+    private ObstacleDetection obstacleDetection;
 
     public PositionTests(){
         rover = new Rover();
         turnRover = new TurnRover();
+        obstacleDetection = new ObstacleDetection();
     }
 
     //test to check initial position with one command
@@ -56,12 +59,17 @@ public class PositionTests {
 
     }
 
-    //test to check that the program correctly detects an obstacle
+    //test to check that the program correctly detects/doesn't detect an obstacle
     @Test
     public void testObstacleDetection(){
-        String obstacleCoordinate = "1,2";
-        String newPosition = "1,2,S";
-        boolean obstaclePresent = false;
+        boolean obstaclePresent = obstacleDetection.checkForObstacle("1,2", "1,2,S");
         Assert.assertTrue(obstaclePresent == true);
+
+        boolean obstacleFalsePresent = obstacleDetection.checkForObstacle("1,4", "3,5,N");
+        Assert.assertTrue(obstacleFalsePresent == false);
     }
+
+
+
+
 }
