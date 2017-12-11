@@ -85,8 +85,13 @@ public class PositionTests {
         Assert.assertTrue(startingPosition.equals(newPosition));
     }
 
-
-
+    //test to ensure wrapping of 10x10 grid
+    @Test
+    public void checkBounds(){
+        int Xcoordinate =0;
+        int Ycoordinate =0;
+        Assert.assertTrue(Xcoordinate <= 10 && Ycoordinate <= 10);
+    }
 
 
 
