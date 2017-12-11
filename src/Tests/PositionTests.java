@@ -55,4 +55,13 @@ public class PositionTests {
         System.out.println(newPositionAndDirection);
 
     }
+
+    //test to check that the program correctly detects an obstacle
+    @Test
+    public void testObstacleDetection(){
+        String obstacleCoordinate = "1,2";
+        String newPosition = "1,2,S";
+        boolean obstaclePresent = false;
+        Assert.assertTrue(obstaclePresent == true);
+    }
 }
