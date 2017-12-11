@@ -15,7 +15,7 @@ public class PositionTests {
         rover = new Rover();
     }
 
-    // test to check initial position with one command
+    //test to check initial position with one command
     @Test
     public void testPositionSingleCommand(){
         String newPosition = rover.findNewPosition("0,0,N", "F");
@@ -30,5 +30,14 @@ public class PositionTests {
         String newPosition = rover.findNewPosition("0,0,N", "FFFBFF");
         Assert.assertTrue(newPosition.equals("0,4,N"));
         System.out.println(newPosition);
+    }
+
+    //test to check the commands L and R correctly change the direction the rover is facing
+    @Test
+    public void testDirection(){
+        String directionAfterL = "";
+        String directionAfterR = "";
+        Assert.assertTrue(directionAfterL == "W");
+        Assert.assertTrue(directionAfterR == "E");
     }
 }
