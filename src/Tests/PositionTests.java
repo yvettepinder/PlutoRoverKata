@@ -17,6 +17,7 @@ public class PositionTests {
     private Rover rover;
     private TurnRover turnRover;
     private ObstacleDetection obstacleDetection;
+    List<String> listOfObstacles = Arrays.asList("5,7", "4,5", "7,8");
 
     public PositionTests(){
         rover = new Rover();
@@ -27,7 +28,7 @@ public class PositionTests {
     //test to check initial position with one command
     @Test
     public void testPositionSingleCommand(){
-        String newPosition = rover.findNewPosition("0,0,N", "F");
+        String newPosition = rover.findNewPosition("0,0,N", "F", listOfObstacles);
         //Assert.assertTrue(newPosition.equals("0,1,N"));
         System.out.println(newPosition);
     }
@@ -36,7 +37,7 @@ public class PositionTests {
     //only testing forwards and backwards
     @Test
     public void testPositionMultipleCommands(){
-        String newPosition = rover.findNewPosition("0,0,N", "FFFBFF");
+        String newPosition = rover.findNewPosition("0,0,N", "FFFBFF", listOfObstacles);
         //Assert.assertTrue(newPosition.equals("0,4,N"));
         System.out.println(newPosition);
     }
@@ -56,7 +57,7 @@ public class PositionTests {
     //commands including a combination of forward backward left right
     @Test
     public void testPositionAndDirection(){
-        String newPositionAndDirection = rover.findNewPosition("0,0,N", "FRFLFRR");
+        String newPositionAndDirection = rover.findNewPosition("0,0,N", "FRFLFRR", listOfObstacles);
         Assert.assertTrue(newPositionAndDirection.equals("1,2,S"));
         System.out.println(newPositionAndDirection);
 
@@ -66,8 +67,7 @@ public class PositionTests {
     //checks for multiple obstacles
     @Test
     public void testObstacleDetection(){
-        List<String> listOfObstacles = Arrays.asList("1,2", "4,5", "7,8");
-        boolean obstaclePresent = obstacleDetection.checkForObstacle(listOfObstacles, "1,2,S");
+        boolean obstaclePresent = obstacleDetection.checkForObstacle(listOfObstacles, "5,7,S");
         Assert.assertTrue(obstaclePresent == true);
 
         boolean obstacleFalsePresent = obstacleDetection.checkForObstacle(listOfObstacles,"3,5,N");
@@ -76,12 +76,13 @@ public class PositionTests {
 
 
     //test to check the rover doesn't move into a space if there is an obstacle there
+    //check this by ensuring the rover stays at the same position when there is an obstacle present
     @Test
     public void testObstacleResponse(){
-        boolean obstaclePresent = true;
-        String startPosition = "";
-        String newPosition = "";
-        Assert.assertTrue(!startPosition.equals(newPosition));
+        String startingPosition = "5,8,S";
+        String newPosition = rover.findNewPosition(startingPosition, "F", listOfObstacles);
+        System.out.println(newPosition);
+        Assert.assertTrue(startingPosition.equals(newPosition));
     }
 
 
