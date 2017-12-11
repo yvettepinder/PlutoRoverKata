@@ -5,6 +5,10 @@ package Rover;
  */
 public class MoveRover {
 
+    private TurnRover turnRover;
+
+    public MoveRover(){ turnRover = new TurnRover(); }
+
     public String movement(String startingPosition, char currentCommand){
 
         //retrieve x and y coordinates of the starting position
@@ -25,11 +29,9 @@ public class MoveRover {
             switch (direction) {
                 case 'N':
                     ycoordinate ++;
-
                     break;
                 case 'E':
                     xcoordinate ++;
-
                     break;
                 case 'S':
                     ycoordinate --;
@@ -42,7 +44,6 @@ public class MoveRover {
             switch (direction) {
                 case 'N':
                     ycoordinate --;
-
                     break;
                 case 'E':
                     xcoordinate --;
@@ -59,7 +60,7 @@ public class MoveRover {
 
         String Xvalue = Integer.toString(xcoordinate);
         String Yvalue = Integer.toString(ycoordinate);
-        String newPosition = Xvalue + "," + Yvalue + "," + direction;
+        String newPosition = Xvalue + "," + Yvalue + "," + turnRover.turn(startingPosition, currentCommand);
 
         return newPosition;
     }

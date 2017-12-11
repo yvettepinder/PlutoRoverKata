@@ -5,12 +5,12 @@ package Rover;
  */
 public class TurnRover {
 
-    public String turn(String startingPosition, String command) {
+    public String turn(String startingPosition, char command) {
         char startingDirection = startingPosition.charAt(4);
-        String newDirection = "";
+        String newDirection = startingPosition.substring(4,4+1);
 
         // add to or subtract from the x and y coordinates according to the command
-        if (command == "L") {
+        if (command == 'L') {
             switch (startingDirection) {
                 case 'N':
                     newDirection = "W";
@@ -25,7 +25,7 @@ public class TurnRover {
                     newDirection = "S";
                     break;
             }
-        } else if (command == "R") {
+        } else if (command == 'R') {
             switch (startingDirection) {
                 case 'N':
                     newDirection = "E";
