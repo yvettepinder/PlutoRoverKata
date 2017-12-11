@@ -45,4 +45,15 @@ public class PositionTests {
         System.out.println(directionAfterL);
         System.out.println(directionAfterR);
     }
+
+    //test to check a command containing multiple commands
+    //commands including a combination of forward backward left right
+    @Test
+    public void testPositionAndDirection(){
+        String startingPosition = "0,0,N";
+        String command = "FRFLFRR";
+        String newPositionAndDirection = "";
+        Assert.assertTrue(newPositionAndDirection.equals("1,2,S"));
+
+    }
 }
