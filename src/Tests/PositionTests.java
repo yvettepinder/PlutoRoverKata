@@ -3,6 +3,7 @@ package Tests;
 import org.junit.Test;
 import org.junit.Assert;
 import Rover.Rover;
+import Rover.TurnRover;
 
 /**
  * Created by yvettepinder on 11/12/2017.
@@ -10,9 +11,11 @@ import Rover.Rover;
 public class PositionTests {
 
     private Rover rover;
+    private TurnRover turnRover;
 
     public PositionTests(){
         rover = new Rover();
+        turnRover = new TurnRover();
     }
 
     //test to check initial position with one command
@@ -35,9 +38,11 @@ public class PositionTests {
     //test to check the commands L and R correctly change the direction the rover is facing
     @Test
     public void testDirection(){
-        String directionAfterL = "";
-        String directionAfterR = "";
+        String directionAfterL = turnRover.turn("0,0,N", "L");
+        String directionAfterR = turnRover.turn("0,0,N", "R");
         Assert.assertTrue(directionAfterL == "W");
         Assert.assertTrue(directionAfterR == "E");
+        System.out.println(directionAfterL);
+        System.out.println(directionAfterR);
     }
 }
