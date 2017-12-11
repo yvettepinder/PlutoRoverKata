@@ -86,14 +86,21 @@ public class PositionTests {
     }
 
     //test to ensure wrapping of 10x10 grid
+    // command increases both the y and x coordinate
     @Test
     public void checkBounds(){
-        int Xcoordinate =0;
-        int Ycoordinate =0;
-        Assert.assertTrue(Xcoordinate <= 10 && Ycoordinate <= 10);
+        String newPosition = rover.findNewPosition("9,9,N", "FRF", listOfObstacles);
+
+        char Xcoordinate = newPosition.charAt(0);
+        char Ycoordinate = newPosition.charAt(2);
+
+        int x = Character.getNumericValue(Xcoordinate);
+        int y = Character.getNumericValue(Ycoordinate);
+
+        System.out.println(x);
+        System.out.println(y);
+
+        Assert.assertTrue(x <= 10 && y <= 10);
     }
-
-
-
 
 }

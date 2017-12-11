@@ -28,34 +28,41 @@ public class MoveRover {
         if (currentCommand == 'F') {
             switch (direction) {
                 case 'N':
-                    ycoordinate ++;
+                    ycoordinate = (ycoordinate + 1) % 10;
                     break;
                 case 'E':
-                    xcoordinate ++;
+                    xcoordinate = (xcoordinate + 1) % 10;
                     break;
                 case 'S':
-                    ycoordinate --;
+                    ycoordinate = (ycoordinate - 1) % 10;
                     break;
                 case 'W':
-                    xcoordinate --;
+                    xcoordinate = (xcoordinate - 1) % 10;
                     break;
             }
         } else if (currentCommand == 'B') {
             switch (direction) {
                 case 'N':
-                    ycoordinate --;
+                    ycoordinate = (ycoordinate - 1) % 10;
                     break;
                 case 'E':
-                    xcoordinate --;
-
+                    xcoordinate = (xcoordinate - 1) % 10;
                     break;
                 case 'S':
-                    ycoordinate ++;
+                    ycoordinate = (ycoordinate + 1) % 10;
                     break;
                 case 'W':
-                    xcoordinate ++;
+                    xcoordinate = (xcoordinate + 1) % 10;
                     break;
             }
+        }
+
+        if (ycoordinate < 0) {
+            ycoordinate += 10;
+        }
+
+        if (xcoordinate < 0) {
+            xcoordinate += 10;
         }
 
         String Xvalue = Integer.toString(xcoordinate);
