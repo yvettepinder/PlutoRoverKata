@@ -5,14 +5,22 @@ package Rover;
  */
 public class Rover {
 
+    private MoveRover moveRover;
+
+    public Rover(){
+        moveRover = new MoveRover();
+    }
+
     public String findNewPosition(String startingPosition, String command){
-        String newPosition = "";
-        if(startingPosition == "0,0,N"){
-            if(command == "F"){
-                newPosition = "0,1,N";
-            }
+        String newPosition;
+        for(int i=0;i<command.length();i++) {
+            char currentCommand = command.charAt(i);
+            newPosition = moveRover.movement(startingPosition, currentCommand);
+            startingPosition = newPosition;
         }
-        return newPosition;
+
+
+        return startingPosition;
 
     }
 }

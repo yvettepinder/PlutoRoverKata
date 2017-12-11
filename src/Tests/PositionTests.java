@@ -20,14 +20,15 @@ public class PositionTests {
     public void testPositionSingleCommand(){
         String newPosition = rover.findNewPosition("0,0,N", "F");
         Assert.assertTrue(newPosition.equals("0,1,N"));
-        System.out.print(newPosition);
+        System.out.println(newPosition);
     }
 
     //test to check initial position with multiple commands
+    //only testing forwards and backwards
     @Test
     public void testPositionMultipleCommands(){
-        String newPosition = rover.findNewPosition("0,0,N", "FRFLFRR");
-        Assert.assertTrue(newPosition.equals("1,2,S"));
-        System.out.print(newPosition);
+        String newPosition = rover.findNewPosition("0,0,N", "FFFBFF");
+        Assert.assertTrue(newPosition.equals("0,4,N"));
+        System.out.println(newPosition);
     }
 }
