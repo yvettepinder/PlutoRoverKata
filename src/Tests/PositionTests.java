@@ -6,6 +6,9 @@ import Rover.Rover;
 import Rover.TurnRover;
 import Rover.ObstacleDetection;
 
+import java.util.Arrays;
+import java.util.List;
+
 /**
  * Created by yvettepinder on 11/12/2017.
  */
@@ -60,14 +63,18 @@ public class PositionTests {
     }
 
     //test to check that the program correctly detects/doesn't detect an obstacle
+    //checks for multiple obstacles
     @Test
     public void testObstacleDetection(){
-        boolean obstaclePresent = obstacleDetection.checkForObstacle("1,2", "1,2,S");
+        List<String> listOfObstacles = Arrays.asList("1,2", "4,5", "7,8");
+        boolean obstaclePresent = obstacleDetection.checkForObstacle(listOfObstacles, "1,2,S");
         Assert.assertTrue(obstaclePresent == true);
 
-        boolean obstacleFalsePresent = obstacleDetection.checkForObstacle("1,4", "3,5,N");
+        boolean obstacleFalsePresent = obstacleDetection.checkForObstacle(listOfObstacles,"3,5,N");
         Assert.assertTrue(obstacleFalsePresent == false);
     }
+
+
 
 
 
